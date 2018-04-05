@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\User;
+use App\Role;
 
 class AdminUsersController extends Controller
 {
@@ -26,8 +27,10 @@ class AdminUsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('admin.users.create');
+    {   
+        $roles = Role::lists('name','id')->all(); 
+        
+        return view('admin.users.create', compact('roles'));
     }
 
     /**
@@ -38,7 +41,7 @@ class AdminUsersController extends Controller
      */
     public function store(Request $request)
     {
-        echo "WOrking";
+        return $request->all();
     }
 
     /**
